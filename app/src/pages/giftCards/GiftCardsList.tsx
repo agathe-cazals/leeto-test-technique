@@ -1,24 +1,31 @@
 import { Link } from 'react-router-dom';
 import { useGiftCardList } from '../../queries/giftcards/useGiftCardsListQuery';
+import { Title } from '../../components/common/title/Title';
+import {Text} from '../../components/common/text/Text'
 
 export function GiftCardsList(){
       const { data, error, isLoading } = useGiftCardList()
-      if (isLoading) return <p className="p-6 text-blue-600">Chargement...</p>;
-      if (error) return <p className="p-6 text-red-600">Erreur lors du chargement.</p>;
+      if (isLoading) return <Text color="secondary" className="p-6">Chargement...</Text>;
+      if (error) return <Text color="error" className="p-6">Erreur lors du chargement.</Text>;
   
     return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Liste des articles</h1>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid p-10 gap-6">
+      <Title color="primary" as="h1" weight='semibold' className="text-xl md:text-2xl mb-2">Cartes Cadeaux</Title>
+      <div className="grid w-auto gap-2">
         {data?.map((item) => (
-          <Link
+          <ul className="grid list-disc gap-2">
+            <li>
+            <Link
             key={item.id}
             to={`/gift-card/${item.id}`}
-            className="block p-4 bg-white rounded-xl shadow hover:shadow-lg transition"
+            className="w-fit"
           >
-            <h2 className="text-lg font-semibold">{item.name}</h2>
-            <p className="text-gray-600">{item.description}</p>
+           <div className=''/>
+            <Text size="medium">{item.name}</Text>
           </Link>
+            </li>
+          </ul>
+          
         ))}
       </div>
     </div>
