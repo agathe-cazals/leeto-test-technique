@@ -10,7 +10,7 @@ function App() {
     <div className="min-h-screen bg-gray-100">
       <Routes>
         <Route path="/" element={<GiftCardsList />} />
-        <Route path="/item/:id" element={<GiftCardDetails />} />
+        <Route path="/gift-card/:id" element={<GiftCardDetails />} />
       </Routes>
     </div>
   </Router>

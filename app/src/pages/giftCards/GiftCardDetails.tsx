@@ -1,19 +1,22 @@
 import { useParams, Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { GiftCard } from '../../queries/giftcards/type';
+import { useGiftCardDetails } from '../../queries/giftcards/useGiftCardDetailsQuery';
 
-const items = [
-  { id: '1', title: 'Article 1', description: 'Ceci est le premier article.' },
-  { id: '2', title: 'Article 2', description: 'Voici un autre article.' },
-  { id: '3', title: 'Article 3', description: 'Encore un exemple.' },
-];
 
-export const GiftCardDetails = () => {
+export function GiftCardDetails(){
   const { id } = useParams<{ id: string }>();
-  const item = items.find((i) => i.id === id);
+  const { data, error, isLoading } = useGiftCardDetails(Number(id))
 
-  if (!item) {
+  
+  if (isLoading) return <p className="p-6 text-blue-600">Chargement...</p>;
+  if (error) return <p className="p-6 text-red-600">Erreur lors du chargement.</p>;
+
+
+  if (!data) {
     return (
       <div className="p-6">
-        <p className="text-red-600">Article non trouvé.</p>
+        <p className="text-red-600">Carte non trouvée.</p>
         <Link to="/" className="text-blue-600 underline">← Retour</Link>
       </div>
     );
@@ -21,8 +24,8 @@ export const GiftCardDetails = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-2">{item.title}</h1>
-      <p className="text-gray-700 mb-4">{item.description}</p>
+      <h1 className="text-2xl font-bold mb-2">{data.name}</h1>
+      <p className="text-gray-700 mb-4">{data.description}</p>
       <Link to="/" className="text-blue-600 underline">← Retour à la liste</Link>
     </div>
   );
