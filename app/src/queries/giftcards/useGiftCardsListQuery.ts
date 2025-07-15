@@ -1,16 +1,12 @@
-import { useQuery } from '@tanstack/react-query';
-import GiftCardRequest from '../../requests/giftCardRequest/GiftCardRequest';
-import { GiftCard } from './type';
+import { useQuery } from "@tanstack/react-query";
+import GiftCardRequest from "../../requests/giftCardRequest/GiftCardRequest";
+import { GiftCard } from "./type";
 
-
-export const useGiftCardList = (
-) =>
+export const useGiftCardList = () =>
   useQuery<GiftCard[]>({
     queryFn: async () => {
-      const response = await GiftCardRequest.GETGiftCardsList(
-      );
+      const response = await GiftCardRequest.GETGiftCardsList();
       return response;
     },
-    queryKey: ['gift-cards'],
+    queryKey: ["gift-cards"],
   });
-

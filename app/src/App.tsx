@@ -1,19 +1,18 @@
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import {GiftCardsList} from './pages/giftCards/GiftCardsList';
-import {GiftCardDetails} from './pages/giftCards/GiftCardDetails';
-
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { GiftCardsList } from "./pages/giftCards/GiftCards";
+import { GiftCardDetails } from "./pages/giftCards/giftCardDetails/GiftCardDetails";
 
 function App() {
   return (
     <Router>
-    <div className="min-h-screen bg-gray-100">
-      <Routes>
-        <Route path="/" element={<GiftCardsList />} />
-        <Route path="/gift-card/:id" element={<GiftCardDetails />} />
-      </Routes>
-    </div>
-  </Router>
+      <div className="min-h-screen">
+        <Routes>
+          <Route path="/" element={<GiftCardsList />} />
+          <Route path="/gift_card/:id" element={<GiftCardDetails />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
