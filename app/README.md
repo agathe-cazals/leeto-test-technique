@@ -1,46 +1,82 @@
-# Getting Started with Create React App
+# Leeto - Front-End Technical Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ce projet est une application React permettant de consulter des cartes cadeaux, réalisée dans le cadre du test technique pour Leeto.
 
-## Available Scripts
+## Fonctionnalités principales
 
-In the project directory, you can run:
+- Liste des cartes cadeaux disponibles
+- Détail d'une carte cadeau (titre, description, dates, bénéficiaires, état de consommation)
+- Composants réutilisables (ProgressBar, Card, Text, etc.)
+- Tests unitaires avec Testing Library et Jest
+- Storybook pour la documentation des composants
 
-### `npm start`
+## Stack technique
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [React 19](https://react.dev)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TanStack Query](https://tanstack.com/query)
+- [Jest](https://jestjs.io/) & [Testing Library](https://testing-library.com/)
+- [Storybook](https://storybook.js.org/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Installer les dépendances :
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   yarn install
+   # ou
+   npm install
+   ```
 
-### `npm run build`
+2. Démarrer le serveur d'API mock (à la racine du projet) :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   yarn start
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   L'API sera disponible sur http://localhost:3001
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Démarrer l'application front-end (dans le dossier `app/`) :
+   ```bash
+   cd app
+   yarn start
+   # ou
+   npm start
+   ```
+   L'application sera disponible sur http://localhost:3000
 
-### `npm run eject`
+## Scripts disponibles
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- `yarn start` : Lance l'application en mode développement
+- `yarn build` : Build l'application pour la production
+- `yarn test` : Lance les tests unitaires en mode interactif
+- `yarn storybook` : Démarre Storybook pour visualiser les composants
+- `yarn build-storybook` : Build la documentation Storybook
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Structure du dossier `app/`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- `src/components/` : Composants réutilisables (common) et spécifiques (giftCards)
+- `src/pages/` : Pages principales de l'application
+- `src/queries/` : Hooks de requêtes API avec TanStack Query
+- `src/requests/` : Fonctions d'accès à l'API
+- `src/helpers/` : Fonctions utilitaires (formatage, calculs, etc.)
+- `src/stories/` : Composants et assets pour Storybook
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Lancer les tests
 
-## Learn More
+```bash
+yarn test
+# ou
+npm test
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Lancer Storybook
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+yarn storybook
+# ou
+npm run storybook
+```
+
+Projet réalisé avec [Create React App](https://github.com/facebook/create-react-app).
